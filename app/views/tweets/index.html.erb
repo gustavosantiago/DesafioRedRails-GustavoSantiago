@@ -1,0 +1,22 @@
+<div class="page-header">
+  <h2>Veja o que nossos usuários estão falando</h2>
+</div>
+
+<br />
+<br />
+<br />
+
+<% @tweets.each do |tweet| %>
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-xs-2>
+        <a href="#" class="thumbnail">
+          <%= image_tag tweet.user.profile.avatar.url(:thumb) %>
+          <strong><%= tweet.user.username %> em <%= tweet.created_at.strftime("%d/%m/%Y ás %H:%M") %></strong>    
+        </a>
+      </div>
+      <h4><%= tweet.content %></h4>
+    </div>
+  </div>  
+  
+<% end %>

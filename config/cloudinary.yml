@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: dfck5rpza
+  api_key: '663749177583983'
+  api_secret: UHkI70P1LH4wcqfx6pa1g0TjArE
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: dfck5rpza
+  api_key: '663749177583983'
+  api_secret: UHkI70P1LH4wcqfx6pa1g0TjArE
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: dfck5rpza
+  api_key: '663749177583983'
+  api_secret: UHkI70P1LH4wcqfx6pa1g0TjArE
+  enhance_image_tag: true
+  static_image_support: false
