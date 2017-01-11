@@ -5,23 +5,20 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def show
-  end
-
   def see_tweets
     @tweets = current_user.tweets.order(created_at: :desc)
   end
 
-  def see_follow_users
-    # Pegar os usuário no qual o current_user é amigo mas eles não possuem o current_user no friend_id
+  def see_user_profile
+    @user = User.find_by(params[:user_id])
   end
 
-  def follow_user
-    # Utilizar metodo para seguir usuário
+  def followers
+    @followers = current_user.followers
   end
 
-  def see_friends
-    # Pegar os usuários que possuem o id do current_user no friend_id 
+  def following
+    @followings = current_user.following
   end
 
   def create
@@ -29,7 +26,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'Legal was successfully created.' }
+        format.html { redirect_to root_path, notice: 'User was successfully created.' }
       else
         format.html { render :new }
       end
@@ -42,7 +39,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to user_activities_path(@user), notice: 'Legal was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'User was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -56,7 +53,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:email, :username, :password, :password_confirmation)
+      params.require(:user).permit(:email, :username, :password, :password_confirmation, profile_attributes: [:name, :bio, :avatar])
     end
 
 end

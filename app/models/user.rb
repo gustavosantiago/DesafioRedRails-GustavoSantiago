@@ -21,6 +21,7 @@
 class User < ApplicationRecord
 
   before_save :downcase_email
+  before_save :apply_at
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -40,6 +41,7 @@ class User < ApplicationRecord
   has_many :following, through: :user_followers, source: :followed
   has_many :followers, through: :user_followeds, source: :follower
 
+  accepts_nested_attributes_for :profile
   attr_accessor :name, :bio, :avatar
 
   EMAIL_REGEX = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
@@ -52,5 +54,10 @@ class User < ApplicationRecord
 
     def downcase_email
       self.email = email.downcase.to_s
+    end
+
+    def apply_at
+      # unless self.username.
+      #   self.username = "@" + username.downcase.to_s
     end
 end

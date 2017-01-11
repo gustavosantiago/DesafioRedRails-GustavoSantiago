@@ -1,0 +1,13 @@
+<div class="modal fade #myModal" tabindex="-1" role="dialog" aria-labelledby="#formModal">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      ...
+    </div>
+  </div>
+</div>
+
+<script src="/javascripts/application.js" type="text/javascript" charset="utf-8" async defer>
+	$('#myModal').on('shown.bs.modal', function () {
+	  $('#formModal').focus()
+	});
+</script>
