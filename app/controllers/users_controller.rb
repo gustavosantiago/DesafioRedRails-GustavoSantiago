@@ -41,8 +41,8 @@ class UsersController < ApplicationController
 
   def update
     respond_to do |format|
-      if @user.update(legal_params)
-        format.html { redirect_to @user, notice: 'Legal was successfully updated.' }
+      if @user.update(user_params)
+        format.html { redirect_to user_activities_path(@user), notice: 'Legal was successfully updated.' }
       else
         format.html { render :edit }
       end

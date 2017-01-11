@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="page-header">
+    <h2><%= current_user.profile.name %> <small><%= current_user.username%></small></h2>
+    <h3><small><%= current_user.profile.bio %></small></h3> 
+    
+    <div class="row">
+      <%= link_to "Editar Perfil", edit_user_path(current_user), class: "btn btn-default pull-right" %>
+    </div>
+  </div>
+
+  <br />
+  <br />
+
+  <h2>Últimos Tweets</h2>
+
+  <br />
+
+  <% @tweets.each do |tweet| %>
+    <div class="jumbotron">
+      <div class="row">
+        <div class="col-xs-2>
+          <a href="#" class="thumbnail">
+            <strong><%= tweet.user.username %> em <%= tweet.created_at.strftime("%d/%m/%Y ás %H:%M") %></strong>    
+          </a>
+        </div>
+        <h4><%= tweet.content %></h4>
+      </div>
+    </div>  
+  <% end %>
+</div>

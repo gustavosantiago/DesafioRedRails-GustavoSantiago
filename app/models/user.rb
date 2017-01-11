@@ -29,6 +29,16 @@ class User < ApplicationRecord
   has_one :profile, class_name: "UserProfile"
   has_many :tweets
   has_many :retweets
+  has_many :user_followers, class_name: "Relationship",
+                            foreign_key: "follower_id", 
+                            dependent: :destroy
+  has_many :user_followeds, class_name: "Relationship",
+                            foreign_key: "followed_id",
+                            dependent: :destroy
+  
+
+  has_many :following, through: :user_followers, source: :followed
+  has_many :followers, through: :user_followeds, source: :follower
 
   attr_accessor :name, :bio, :avatar
 
