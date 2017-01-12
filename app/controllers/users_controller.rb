@@ -9,8 +9,12 @@ class UsersController < ApplicationController
     @tweets = current_user.tweets.order(created_at: :desc)
   end
 
-  def see_user_profile
-    @user = User.find_by(params[:user_id])
+  def see_profile
+    @user = User.find(params[:user_id])
+  end
+
+  def follow_user
+    
   end
 
   def followers
@@ -26,7 +30,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to root_path, notice: 'User was successfully created.' }
+        format.html { redirect_to user_activities_path(@user), notice: 'User was successfully created.' }
       else
         format.html { render :new }
       end
@@ -34,6 +38,9 @@ class UsersController < ApplicationController
   end
 
   def edit
+    if @user.profile.nil?
+      @user.build_profile
+    end
   end
 
   def update

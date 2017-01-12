@@ -15,7 +15,7 @@
       </div>
 
       <%= f.fields_for :profile do |builder| %>
-        <%= render "users/shared/profile_fields", :f => builder %>
+        <%= render "users/shared/profile_fields", f: builder %>
       <% end %>
 
       <div class="form-input">

@@ -1,0 +1,17 @@
+<div class="form-input">
+  <%= f.label :name %> 
+  <%= f.text_field :name, class: "form-control" %>
+  <br /> 
+</div>
+
+<div class="form-input">
+  <%= f.label :bio %> 
+  <%= f.text_area :bio, class: "form-control" %>
+  <br /> 
+</div>
+
+<div class="form-input">
+  <%= f.label :avatar %>
+  <%= f.file_field :avatar, as: :file %>
+  <br />
+</div>

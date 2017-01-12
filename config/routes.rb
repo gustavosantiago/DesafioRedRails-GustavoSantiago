@@ -10,5 +10,8 @@ TwitterRedRocket::Application.routes.draw do
     end
     
   	get 'see_tweets' => 'users#see_tweets', as: 'activities'
+    get 'see_profile' => 'users#see_profile', as: 'profile'
   end
+
+  resources :tweets
 end

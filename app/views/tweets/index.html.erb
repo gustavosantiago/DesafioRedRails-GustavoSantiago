@@ -7,14 +7,18 @@
 <br />
 
 <% @tweets.each do |tweet| %>
+  
   <div class="jumbotron">
     <div class="row">
       <div class="col-xs-3">
         <%= image_tag tweet.user.profile.avatar.url(:thumb) %><br />
-        <strong><%= link_to "#{tweet.user.username}", '#' %><br /> 
+        <strong><%= link_to "#{tweet.user.username}", user_profile_path(tweet.user) %><br /> 
         <%= tweet.created_at.strftime("%d/%m/%Y ás %H:%M") %></strong>    
       </div>
       <h4><%= tweet.content %></h4>
+      <% unless tweet.photo.blank?  %>
+        <%= image_tag tweet.photo.url(:medium) %>
+      <% end %>
     </div>
   </div>  
   

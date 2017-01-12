@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <%= form_for :tweet, url: { controller: "tweets", action: "create" }, remote: true, html: { multipart: true } do |f| %>
+      
+      <div class="form-input">      
+        <%= f.text_area :content, placeholder: "No que está pensando?", class: "form-control", style: "padding: 28px 12px; width: 86%; height: 134px;" %><br />
+      </div>
+
+      <div class="form-input">
+        <%= f.file_field :photo %>      
+        <%= f.submit "Enviar Tweet", class: "btn btn-success" %>
+      </div>
+    <% end %>
+  </div>
+</div>

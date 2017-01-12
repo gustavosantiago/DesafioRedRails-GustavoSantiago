@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="page-header">
+    <div class="row">
+      <div class="col-md-4">
+        <%= image_tag @user.profile.avatar.url(:medium) %> <br /> 
+        <h1><%= @user.profile.name %> <small><%= @user.username%></small></h1>
+      </div>
+    </div>
+      
+    <h2><small><%= @user.profile.bio %></small></h2> 
+    <br />
+    <div class="row">
+      <div class="col-md-12">
+        Seguindo: <%= @user.following.count %>, 
+        Seguidores: <%= @user.followers.count %>,
+        Tweets: <%= @user.tweets.count %>
+        <%= link_to "Seguir", '#', class: "btn btn-default pull-right" %>        
+      </div>
+    </div>
+  </div>
+
+  <br />
+
+  <%#= render "tweets/shared/form_new_tweet", new_tweet: current_user.tweets.new %>
+    
+  <br />
+
+  <h3>Últimos Tweets</h3>
+
+  <br />
+
+  <% @user.tweets.each do |tweet| %>
+    <div class="jumbotron">
+      <div class="row">
+      <div class="col-xs-2">
+        <%= image_tag tweet.user.profile.avatar.url(:thumb) %>
+        <strong><%= @user.username %> em <%= tweet.created_at.strftime("%d/%m/%Y ás %H:%M") %></strong>    
+      </div>
+      <h4><%= tweet.content %></h4>
+    </div>
+    </div>  
+  <% end %>
+</div>
+
+<%= render "users/shared/form_modal" %>

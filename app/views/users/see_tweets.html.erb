@@ -15,12 +15,13 @@
         Seguidores: <%= current_user.followers.count %>,
         Tweets: <%= current_user.tweets.count %>         
       </div>
-      <button class="btn btn-info pull-right" data-toggle="modal" data-target="#myModal">Criar Tweet</button>
-      
     </div>
   </div>
 
   <br />
+
+  <%= render "tweets/shared/form_new_tweet", tweet: current_user.tweets.new %>
+    
   <br />
 
   <h3>Últimos Tweets</h3>
