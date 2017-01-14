@@ -11,10 +11,16 @@
     <br />
     <div class="row">
       <div class="col-md-12">
-        Seguindo: <%= @user.following.count %>, 
-        Seguidores: <%= @user.followers.count %>,
-        Tweets: <%= @user.tweets.count %>
-        <%= link_to "Seguir", '#', class: "btn btn-default pull-right" %>        
+        <ol class="breadcrumb">
+          <li>Seguindo: <%= @user.following.count %></li>
+          <li>Seguidores: <%= @user.followers.count %></li>
+          <li>Tweets: <%= @user.tweets.count %></li>
+        </ol>        
+        <% if current_user.following?(@user)%>
+          <%= render 'users/shared/unfollow' %>
+        <% else %>
+          <%= render 'users/shared/follow' %>
+        <% end %>
       </div>
     </div>
   </div>

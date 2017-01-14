@@ -6,5 +6,9 @@
   <br />
   <br />
 
-  <%= render "users/shared/see_person" %>
+  <% unless @users.present? %>
+  	<%= "Você não está seguindo ninguem" %>
+  <% else %>
+  	<%= render "users/shared/see_person" %>
+  <% end %>
 </div>

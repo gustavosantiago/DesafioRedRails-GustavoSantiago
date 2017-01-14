@@ -2,6 +2,12 @@
   <div class="col-md-6 col-md-offset-3">
     <%= form_for @user , html: { multipart: true } do |f| %>
       
+      <% if @user.errors.full_messages.any? %>
+        <% @user.errors.full_messages.each do |error_message| %>
+          <%= error_message if @user.errors.full_messages.first == error_message %> <br />
+        <% end %>
+      <% end %>
+
       <div class="form-input">
         <%= f.label :email %>
         <%= f.email_field :email, class: "form-control" %>

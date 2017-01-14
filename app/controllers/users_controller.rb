@@ -13,16 +13,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:user_id])
   end
 
-  def follow_user
-    
-  end
-
   def followers
-    @followers = current_user.followers
+    @users = current_user.followers
   end
 
   def following
-    @followings = current_user.following
+    @users = current_user.following
   end
 
   def create
@@ -46,7 +42,8 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to root_path, notice: 'User was successfully updated.' }
+        bypass_sign_in(@user)
+        format.html { redirect_to user_activities_path(@user), notice: 'User was successfully updated.' }
       else
         format.html { render :edit }
       end

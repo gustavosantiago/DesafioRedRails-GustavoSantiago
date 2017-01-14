@@ -29,7 +29,6 @@ class User < ApplicationRecord
 
   has_one :profile, class_name: "UserProfile"
   has_many :tweets
-  has_many :retweets
   has_many :user_followers, class_name: "Relationship",
                             foreign_key: "follower_id", 
                             dependent: :destroy
@@ -49,6 +48,18 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :username, length: { minimum: 8 }, on: [:update]
   validates :email, format: { with: EMAIL_REGEX }, on: [:create, :update] 
+
+  def follow(other_user)
+    following << other_user
+  end
+
+  def unfollow(other_user)
+    following.delete(other_user)
+  end
+
+  def following?(other_user)
+    following.include?(other_user)
+  end
 
   private
 

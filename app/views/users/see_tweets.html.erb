@@ -11,9 +11,11 @@
     <br />
     <div class="row">
       <div class="col-md-5">
-        Seguindo: <%= current_user.following.count %>, 
-        Seguidores: <%= current_user.followers.count %>,
-        Tweets: <%= current_user.tweets.count %>         
+        <ol class="breadcrumb">
+          <li>Seguindo: <%= current_user.following.count %></li>
+          <li>Seguidores: <%= current_user.followers.count %></li>
+          <li>Tweets: <%= current_user.tweets.count %></li>
+        </ol>         
       </div>
     </div>
   </div>

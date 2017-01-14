@@ -9,16 +9,9 @@
 </head>
 <body>
   <% if user_signed_in? %>
-    <%= render "layouts/shared/header"%>   
-  <% else %>
-    <% create_profile %> 
+    <%= render "layouts/shared/header"%>
   <% end %>
   
-  <div class="container">
-    <p class="notice"><%= notice %></p>
-    <p class="notice"><%= alert %></p>
-  </div>
-
   <div class="container">
     <%= yield %>
   </div>
