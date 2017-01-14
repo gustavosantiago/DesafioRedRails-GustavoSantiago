@@ -10,7 +10,7 @@
     <h2><small><%= current_user.profile.bio %></small></h2> 
     <br />
     <div class="row">
-      <div class="col-md-5">
+      <div class="col-md-12">
         <ol class="breadcrumb">
           <li>Seguindo: <%= current_user.following.count %></li>
           <li>Seguidores: <%= current_user.followers.count %></li>
@@ -20,7 +20,7 @@
     </div>
   </div>
 
-  <br />
+  <div style="margin: 40px;"></div>
 
   <%= render "tweets/shared/form_new_tweet", tweet: current_user.tweets.new %>
     
@@ -34,10 +34,17 @@
     <div class="jumbotron">
       <div class="row">
       <div class="col-xs-2">
-        <%= image_tag tweet.user.profile.avatar.url(:thumb) %>
+        <% if current_user.profile.avatar_file_name.nil? %>
+          <%= image_tag "user.png" %><br />
+        <% else %>
+          <%= image_tag tweet.user.profile.avatar.url(:thumb) %>
+        <% end %>
         <strong><%= tweet.user.username %> em <%= tweet.created_at.strftime("%d/%m/%Y ás %H:%M") %></strong>    
       </div>
       <h4><%= tweet.content %></h4>
+      <% unless tweet.photo.blank? %>
+        <%= image_tag tweet.photo.url(:medium) %>
+      <% end %>
     </div>
     </div>  
   <% end %>

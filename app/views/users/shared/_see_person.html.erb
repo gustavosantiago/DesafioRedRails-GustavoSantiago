@@ -2,7 +2,13 @@
   <% @users.each do |user| %>
     <div class="col-md-4">
       <div class="thumbnail">
-        <%= image_tag user.profile.avatar.url(:thumb), class: "text-center" %> <br />
+        
+        <% if user.profile.avatar_file_name.nil? %>
+          <%= image_tag "user.png" %>
+        <% else %>
+          <%= image_tag user.profile.avatar.url(:thumb), class: "text-center" %> <br />
+        <% end %>
+        
         <h3 class="text-center"><strong><%= link_to "#{user.profile.name}", user_profile_path(user) %><br /> </h3>
         <p class="text-center"><%= user.profile.bio %></p>
       </div>

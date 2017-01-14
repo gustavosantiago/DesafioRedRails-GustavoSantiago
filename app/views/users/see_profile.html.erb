@@ -2,7 +2,11 @@
   <div class="page-header">
     <div class="row">
       <div class="col-md-4">
-        <%= image_tag @user.profile.avatar.url(:medium) %> <br /> 
+        <% if @user.profile.avatar_file_name.nil? %><br />
+          <%= image_tag "user_big.png" %>
+        <% else %>
+          <%= image_tag @user.profile.avatar.url(:medium) %><br /> 
+        <% end %>
         <h1><%= @user.profile.name %> <small><%= @user.username%></small></h1>
       </div>
     </div>
@@ -25,15 +29,11 @@
     </div>
   </div>
 
-  <br />
-
-  <%#= render "tweets/shared/form_new_tweet", new_tweet: current_user.tweets.new %>
-    
-  <br />
+  <div style="margin: 50px;"></div>
 
   <h3>Últimos Tweets</h3>
 
-  <br />
+  <div style="margin: 30px;"></div>
 
   <% @user.tweets.each do |tweet| %>
     <div class="jumbotron">

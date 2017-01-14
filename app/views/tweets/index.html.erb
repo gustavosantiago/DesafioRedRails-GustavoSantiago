@@ -2,23 +2,34 @@
   <h2>Veja o que nossos usuários estão falando</h2>
 </div>
 
-<br />
-<br />
-<br />
+<div style="margin: 70px;"></div>
 
 <% @tweets.each do |tweet| %>
   
   <div class="jumbotron">
     <div class="row">
       <div class="col-xs-3">
-        <%= image_tag tweet.user.profile.avatar.url(:thumb) %><br />
-        <strong><%= link_to "#{tweet.user.username}", user_profile_path(tweet.user) %><br /> 
+        
+        <% if tweet.user.profile.avatar_file_name.nil? %>
+          <%= image_tag "user.png" %><br />
+        <% else %>
+          <%= image_tag tweet.user.profile.avatar.url(:thumb) %><br />
+        <% end %>
+        
+        <% if current_user.id == tweet.user.id %>
+          <strong><%= link_to "#{current_user.username}", user_activities_path(current_user) %><br />
+        <% else %>
+          <strong><%= link_to "#{tweet.user.username}", user_profile_path(tweet.user) %><br /> 
+        <% end %>
+        
         <%= tweet.created_at.strftime("%d/%m/%Y ás %H:%M") %></strong>    
       </div>
       <h4><%= tweet.content %></h4>
-      <% unless tweet.photo.blank?  %>
+      
+      <% unless tweet.photo.blank? %>
         <%= image_tag tweet.photo.url(:medium) %>
       <% end %>
+    
     </div>
   </div>  
   
