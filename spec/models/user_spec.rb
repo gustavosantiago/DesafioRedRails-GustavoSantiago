@@ -21,5 +21,32 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+  it "should haven't a nil email" do
+    user = FactoryGirl.create(:user)
+    
+    expect(user.email).to_not eq(nil)
+  end
+
+  it "should have a valid email" do
+    email = "example,test@test,com"
+    username = "@test"
+    password = 1..6
+    user = build(:user, 
+                  email: email, 
+                  username: username, 
+                  password: password, 
+                  password_confirmation: password)
+    user.valid?
+
+    expect(user.errors[:email].size).to eq(1)
+  end
+
+  it "should have a profile" do
+    user = User.new
+    user.build_profile(name: "Lorem", bio: "Ypsum Lorem")
+
+    expect(user.profile).to be_valid
+  end
+
 end

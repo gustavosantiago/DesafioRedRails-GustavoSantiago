@@ -46,7 +46,7 @@ class User < ApplicationRecord
   EMAIL_REGEX = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
   
   validates :email, presence: true, uniqueness: true
-  validates :username, length: { minimum: 8 }, on: [:update]
+  validates :username, length: { minimum: 6 }, on: :update
   validates :email, format: { with: EMAIL_REGEX }, on: [:create, :update] 
 
   def follow(other_user)

@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: user_profiles
+#
+#  id                  :integer          not null, primary key
+#  name                :string
+#  user_id             :integer
+#  bio                 :text
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  avatar_file_name    :string
+#  avatar_content_type :string
+#  avatar_file_size    :integer
+#  avatar_updated_at   :datetime
+#
+
 class UserProfile < ApplicationRecord
   belongs_to :user, dependent: :delete
 
