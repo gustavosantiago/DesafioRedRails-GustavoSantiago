@@ -26,9 +26,9 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to user_activities_path(@user), notice: 'User was successfully created.' }
+        format.html { redirect_to user_activities_path(@user), notice: t('controllers.users.notice_create') }
       else
-        format.html { render :new }
+        format.html { render :new, alert: t('controllers.users.alert_create') }
       end
     end
   end
@@ -43,9 +43,9 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update(user_params)
         bypass_sign_in(@user)
-        format.html { redirect_to user_activities_path(@user), notice: 'User was successfully updated.' }
+        format.html { redirect_to user_activities_path(@user), notice: t('controllers.users.notice_update') }
       else
-        format.html { render :edit }
+        format.html { render :edit, alert: t('controllers.users.alert_update') }
       end
     end
   end

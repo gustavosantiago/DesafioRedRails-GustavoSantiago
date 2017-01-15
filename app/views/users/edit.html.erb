@@ -1,6 +1,10 @@
 <div class="container">
   <div class="page-header">
-  	<h2>Editar Usuário</h2>
+    <h2>Editar Usuário</h2>
+
+    <% if current_user.profile.nil? %>
+      <small><h4>Para realizar seu primeiro tweet, é necessário adicionar algumas informações</h4></small>
+    <% end %>
   </div>
 
   <div style="margin: 65px;"></div>

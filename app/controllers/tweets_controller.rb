@@ -16,9 +16,7 @@ class TweetsController < ApplicationController
         
     respond_to do |format|
       if @tweet.save
-        format.html { redirect_to user_activities_path(current_user), notice: 'tweet was successfully created.' }
-      else
-        format.html { render :new }
+        format.html { redirect_to user_activities_path(current_user), notice: t('controllers.tweets.notice') }
       end
     end  
   end

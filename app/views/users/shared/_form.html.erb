@@ -3,19 +3,21 @@
     <%= form_for @user , html: { multipart: true } do |f| %>
       
       <% if @user.errors.full_messages.any? %>
-        <% @user.errors.full_messages.each do |error_message| %>
-          <%= error_message if @user.errors.full_messages.first == error_message %> <br />
-        <% end %>
+        <p class="alert alert-danger">
+          <% @user.errors.full_messages.each do |error_message| %>
+            - <%= error_message %><br />      
+          <% end %>
+        </p>
       <% end %>
 
       <div class="form-input">
-        <%= f.label :email %>
+        <%= f.label :email, t('models.user.email') %>
         <%= f.email_field :email, class: "form-control" %>
         <br />
       </div>
 
       <div class="form-input">
-        <%= f.label :username %>
+        <%= f.label :username, t('models.user.username') %>
         <%= f.text_field :username, class: "form-control" %>
         <br />
       </div>
@@ -25,19 +27,19 @@
       <% end %>
 
       <div class="form-input">
-        <%= f.label :password %>
+        <%= f.label :password, t('models.user.password') %>
         <%= f.password_field :password, class: 'form-control' %>
         <br />
       </div>
 
       <div class="form-input">
-        <%= f.label :password_confirmation, "Confirmation" %>
+        <%= f.label :password_confirmation, t('models.user.password_confirmation') %>
         <%= f.password_field :password_confirmation, class: 'form-control' %>
         <br />
       </div>
 
       <div class="form-input">      
-        <%= f.submit "Salvar dados", class: "btn btn-success" %>
+        <%= f.submit t('buttons.confirm_update'), class: "btn btn-success" %>
       </div>
     <% end %>
   </div>

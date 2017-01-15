@@ -1,0 +1,68 @@
+# encoding: UTF-8
+
+pt-BR:
+  models:
+    user:
+      email: "E-mail"
+      username: "Usuário"
+      password: "Senha"
+      password_confirmation: "Confirme a Senha"
+    profile:
+      name: "Nome"
+      bio: "Sobre você"
+      avatar: "Imagem do perfil"
+    tweets:
+      content: "Tweet"
+      photo: "Foto"
+  controllers:
+    users:
+      notice_create: "Usuário criado com sucesso"
+      alert_create: "Houveram erros ao criar o usuário"
+      notice_update: "Usuário atualizado com sucesso"
+      alert_update: "Houveram erros ao atualizar o usuário"
+    tweets:
+      notice: "Tweet criado com sucesso."
+    friendships:
+      notice: "Você está seguindo "
+      alert: "Você deixou de seguir "
+  buttons:
+    confirm_update: "Salvar dados"
+    create_tweet: "Enviar Tweet"
+    follow: "Seguir"
+    unfollow: "Deixar de seguir"
+  errors: &errors
+    format: ! '%{attribute} %{message}'
+    messages:
+      accepted: deve ser aceito
+      blank: não pode ficar em branco
+      confirmation: não está de acordo com a confirmação
+      empty: não pode ficar vazio
+      equal_to: deve ser igual a %{count}
+      even: deve ser par
+      exclusion: não está disponível
+      greater_than: deve ser maior que %{count}
+      greater_than_or_equal_to: deve ser maior ou igual a %{count}
+      inclusion: não está incluído na lista
+      invalid: não é válido
+      less_than: deve ser menor que %{count}
+      less_than_or_equal_to: deve ser menor ou igual a %{count}
+      not_a_number: não é um número
+      not_an_integer: não é um número inteiro
+      odd: deve ser ímpar
+      record_invalid: ! 'A validação falhou: %{errors}'
+      taken: já está em uso
+      too_long: ! 'é muito longo (máximo: %{count} caracteres)'
+      too_short: ! 'é muito curto (mínimo: %{count} caracteres)'
+      wrong_length: não possui o tamanho esperado (%{count} caracteres)
+  activemodel:
+    errors:
+      <<: *errors
+  activerecord:
+    models:
+      user: Usuário
+    attributes:
+      user:
+        name: Nome
+
+    errors:
+      <<: *errors

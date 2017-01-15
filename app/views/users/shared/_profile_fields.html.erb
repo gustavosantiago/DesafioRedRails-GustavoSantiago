@@ -1,17 +1,17 @@
 <div class="form-input">
-  <%= f.label :name %> 
+  <%= f.label :name, t('models.profile.name') %> 
   <%= f.text_field :name, class: "form-control" %>
   <br /> 
 </div>
 
 <div class="form-input">
-  <%= f.label :bio %> 
+  <%= f.label :bio, t('models.profile.bio') %> 
   <%= f.text_area :bio, class: "form-control" %>
   <br /> 
 </div>
 
 <div class="form-input">
-  <%= f.label :avatar %>
+  <%= f.label :avatar, t('models.profile.avatar') %>
   <%= f.file_field :avatar, as: :file %>
   <br />
 </div>

@@ -20,8 +20,9 @@
 
 class User < ApplicationRecord
 
-  before_save :downcase_email
-  before_save :apply_at
+  before_save   :downcase_email
+  before_update :apply_at
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -35,7 +36,6 @@ class User < ApplicationRecord
   has_many :user_followeds, class_name: "Relationship",
                             foreign_key: "followed_id",
                             dependent: :destroy
-  
 
   has_many :following, through: :user_followers, source: :followed
   has_many :followers, through: :user_followeds, source: :follower
@@ -68,7 +68,8 @@ class User < ApplicationRecord
     end
 
     def apply_at
-      # unless self.username.
-      #   self.username = "@" + username.downcase.to_s
+      if self.username[0] != "@"
+        self.username = self.username.replace "@" + self.username
+      end
     end
 end

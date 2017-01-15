@@ -5,7 +5,7 @@ module ApplicationHelper
   end
 
   def redirect_to_edit
-  	link_to "Editar Perfil", edit_user_path(current_user) 	
+  	link_to "Criar tweet", edit_user_path(current_user) 	
   end
 
 end
