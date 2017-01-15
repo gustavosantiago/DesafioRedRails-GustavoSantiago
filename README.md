@@ -1,4 +1,4 @@
-# Desafio Red Rails - Gustavo Santiago
+# Desafio Red Rocket - Gustavo Santiago
 
 Antes de tudo, devo contar algumas considerações:
 
