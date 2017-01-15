@@ -1,24 +1,9 @@
-# README
+# Desafio Red Rails - Gustavo Santiago
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Antes de tudo, devo contar algumas considerações:
 
-Things you may want to cover:
+* Projeto versionado em Ruby 2.3.3 e Rails 5 
 
-* Ruby version
+* É necessário modificar o ``` config/database.yml ``` para rodar localmente.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Para execução de alguns testes, é necessário executar ``` rspec ```
